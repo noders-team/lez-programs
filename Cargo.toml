@@ -15,12 +15,16 @@ members = [
     "programs/twap_oracle/core",
     "programs/twap_oracle",
     "programs/twap_oracle/methods",
+    "programs/vesting/core",
+    "programs/vesting",
+    "programs/vesting/methods",
     "programs/stablecoin/core",
     "programs/stablecoin",
     "programs/stablecoin/methods",
     "programs/integration_tests",
     "tools/idl-gen",
     "tools/risc0-packager",
+    "tools/vesting-private-claim",
 ]
 exclude = [
     "programs/token/methods/guest",

@@ -15,8 +15,10 @@ token_core = { workspace = true }
 ata_core = { workspace = true }
 stablecoin_core = { workspace = true }
 twap_oracle_core = { workspace = true }
+vesting_core = { path = "../vesting/core" }
 token-methods = { path = "../token/methods" }
 amm-methods = { path = "../amm/methods" }
 ata-methods = { path = "../ata/methods" }
 stablecoin-methods = { path = "../stablecoin/methods" }
 twap-oracle-methods = { path = "../twap_oracle/methods" }
+vesting-methods = { path = "../vesting/methods" }

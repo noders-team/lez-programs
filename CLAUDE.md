@@ -6,12 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repo contains essential programs for the **Logos Execution Zone (LEZ)** — a zkVM-based execution environment built on [RISC Zero](https://risczero.com/). Programs run inside the RISC Zero zkVM (`riscv32im-risc0-zkvm-elf` target) and interact with the LEZ runtime via the `lee_core` library from `logos-execution-zone`.
 
-Five programs are implemented:
+Six programs are implemented:
 - **token** — Fungible and non-fungible token program (create, mint, burn, transfer, print NFTs)
 - **amm** — Automated market maker (constant product AMM with add/remove liquidity and swaps)
 - **ata** — Associated Token Account program (derives and initializes deterministic token accounts for a given owner and token definition)
 - **stablecoin** — Collateral-backed position program (open positions, repay debt, withdraw collateral)
 - **twap_oracle** — TWAP oracle (provides canonical on-chain price accounts consumed by other programs)
+- **vesting** — Privacy-preserving token vesting, RFP-017 (PDA escrow, cliff/linear/milestone schedules, cancel, transfer, batch; see `README-VESTING.md`)
 
 ## Build Commands
 
@@ -137,7 +138,7 @@ programs/
     methods/            # Host-side zkVM method embedding
     methods/guest/      # Guest binary (separate workspace)
   integration_tests/
-    tests/              # End-to-end tests through the zkVM (token, amm, ata)
+    tests/              # End-to-end tests through the zkVM (token, amm, ata, vesting)
 apps/
   amm/                  # QML-based UI for the AMM program (Nix flake)
 ```

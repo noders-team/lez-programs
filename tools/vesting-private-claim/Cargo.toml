@@ -1,0 +1,31 @@
+[package]
+name = "vesting-private-claim"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+description = "Evidence client: one ClaimToPrivate { as_of } privacy-preserving transaction of the vesting program, sent from the LEZ wallet"
+
+[lints]
+workspace = true
+
+[dependencies]
+# Host-side wallet: fetches pre-states, pads private inputs, proves locally, signs and sends.
+wallet = { git = "https://github.com/logos-blockchain/logos-execution-zone.git", tag = "v0.2.4" }
+# `LeeTransaction` (what `poll_transaction` returns) lives in the LEZ `common` crate.
+common = { git = "https://github.com/logos-blockchain/logos-execution-zone.git", tag = "v0.2.4" }
+lee = { workspace = true }
+# `Nullifier` is not re-exported by `lee`; needed to print the destination's init nullifier.
+lee_core = { workspace = true, features = ["host"] }
+vesting_core = { path = "../../programs/vesting/core" }
+token_core = { workspace = true }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+hex = "0.4"
+tokio = { workspace = true }
+
+[features]
+# By default the wallet proves through the external `r0vm` 3.0.5 binary on PATH (`~/.risc0/bin`),
+# exactly like the LEZ `wallet` CLI. `prove` compiles the RISC Zero prover into the binary
+# instead; on macOS that needs the full Xcode Metal toolchain (risc0-sys builds Metal kernels).
+prove = ["lee/prove"]

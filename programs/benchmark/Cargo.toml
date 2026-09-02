@@ -16,5 +16,8 @@ lee_core = { git = "https://github.com/logos-blockchain/logos-execution-zone.git
 clock_core = { git = "https://github.com/logos-blockchain/logos-execution-zone.git", tag = "v0.2.4" }
 twap_oracle_core = { path = "../twap_oracle/core" }
 twap-oracle-methods = { path = "../twap_oracle/methods" }
+token_core = { path = "../token/core" }
+vesting_core = { path = "../vesting/core" }
+vesting-methods = { path = "../vesting/methods" }
 # `prove` exposes `ExecutorImpl`/`Session` (the cycle split); we only execute, never prove.
 risc0-zkvm = { version = "=3.0.5", features = ["prove"] }

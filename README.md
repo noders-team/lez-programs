@@ -11,6 +11,7 @@ Essential programs for the **Logos Execution Zone (LEZ)** — a zkVM-based execu
 | **ata** | Associated Token Account program — derives and initializes deterministic token holding accounts for a given owner and token definition |
 | **stablecoin** | Collateral-backed position program — open collateral positions as a foundation for stablecoin debt issuance |
 | **twap_oracle** | TWAP oracle — provides canonical on-chain price accounts consumed by other programs (e.g. stablecoin) |
+| **vesting** | Privacy-preserving token vesting (RFP-017) — PDA escrow, cliff/linear/milestone schedules, cancellation, transferable positions, batch creation; see [README-VESTING.md](README-VESTING.md) |
 
 ## Apps
 
@@ -85,11 +86,12 @@ RISC0_DEV_MODE=1 cargo test -p integration_tests
 make test
 ```
 
-Integration tests live in `programs/integration_tests/tests/` and cover `token`, `amm`, and `ata` programs end-to-end through the zkVM using `RISC0_DEV_MODE=1` to skip proof generation. Each test file corresponds to a program:
+Integration tests live in `programs/integration_tests/tests/` and cover `token`, `amm`, `ata`, and `vesting` programs end-to-end through the zkVM using `RISC0_DEV_MODE=1` to skip proof generation. Each test file corresponds to a program:
 
 - `programs/integration_tests/tests/token.rs`
 - `programs/integration_tests/tests/amm.rs`
 - `programs/integration_tests/tests/ata.rs`
+- `programs/integration_tests/tests/vesting.rs`
 
 `stablecoin` and `twap_oracle` are tested via their own unit tests (`cargo test -p stablecoin_program -p twap_oracle_program`).
 
