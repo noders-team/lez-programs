@@ -1,0 +1,21 @@
+create schedule 13: cliff+linear, start T0, cliff T0+120s, end T0+900s, cancelable, transferable, nominated authorities	ok	3dd1087f1d710530f1f73726dbfd877196a6abbcf1dbba0c3a337e116499db1a
+claim schedule 13 before the cliff (expect rejection: nothing claimable yet)	reject	10873489b7563ea3fa21139dc93b69b2aa666459c701dd99b124eeaab2b9e64f
+create schedule 14: milestone tranches 300,700	ok	a343e9d06cac40a2764b5cc14f55fbdf1ef7e62c4218b935ce18d1cf55681950
+create schedule 15: fully linear, start T7, end T7+1200s, cancelable	ok	9d582990aa8565a77e24cba828725362f5bc13c679cde985d15db3722b876cd0
+create schedule 16: cliff+linear over 1h, cancelable (to be made non-cancelable)	ok	08d67ec474a075086bb9181e4ad5d41debcfa342fa3b307254ecdca3e5e7e2d0
+claim schedule 13 after the cliff (pro-rata, signed by the beneficiary)	ok	88f21995572c643cf9edc61e1ceb8e095d574eea67861e5c49909111647416eb
+transfer schedule 13 position to beneficiary2 (signed by current beneficiary)	ok	22208f456f6a04a54607376c74b1af069b5a1ed861a08b0d3b5efad2b01aa794
+claim schedule 13 signed by the OLD beneficiary (expect rejection: holding does not match the schedule)	reject	d98c90ccff54c7c181a7ff8e4ba45aae9b03c85d7381fd9fb32f4792ed1732d4
+signal milestone 0 on schedule 14	ok	a572611f9b098226c573da310c5a2aa8b16e49acd50b0338af9ab5815f2b39bd
+claim schedule 14 (tranche 0 = 300)	ok	b687de2130bdc90a627f3b6b1c794530d530edc0ed3e3b4792b82bd6eca5e843
+signal milestone 0 AGAIN on schedule 14 (expect rejection: already signalled)	reject	5dc6d1dc974c79bd2be736ac2ec5e18679a1dba60a3d5979b61a431b6b9108bf
+signal milestone 1 on schedule 14	ok	777464e37b0afe97b05e86351356552560e0a4d69e82bd1ce30303506cd35cb5
+claim-to: schedule 14 tranche 1 (700) paid to beneficiary2's holding, authorised by the beneficiary	ok	4039542ddbe6052b911a677e9bda6ee3c66ba067b1c7b3424fa7f00a65a53ed3
+make schedule 16 non-cancelable	ok	cc1519d0c799c904994c76f36a3e07477ba8dfbaf430596cd47f490902a189e1
+cancel schedule 16 (expect rejection: non-cancelable)	reject	bd06608d40d094cedf37466ebc3decf2d4ab4fabbc3e83ada298009e4a84cf8d
+cancel schedule 15 mid-way (unvested returns to creator, vested stays claimable)	ok	b44561014cc5370cc273cd3b99b4a92f23c829bf199e10766a4ff0ed28a2e529
+claim schedule 15 after cancellation (vested-but-unclaimed part)	ok	fceba375f22277c3bcdc75b76e1ae8769ed7674be831b28b231363433bc96d8f
+claim schedule 15 again (expect rejection: nothing claimable)	reject	69ab83e53de5800e51d21605cf55408a34db05e42d2a0543d391ec5b6ae46c14
+claim schedule 13 signed by beneficiary2 after the end (remainder)	ok	c44e90ba2c2e8877ee7a28698bd7aa69bae14fbcf8b3166efd65ef831d5be6b1
+create schedule 17: fully linear, start T20-600s, end T20-1s (already fully vested), non-transferable	ok	7e9e68cdec09f9b04dcadc0c6ac49ee6879518ab6d6db62b484288149cc5ec38
+private claim of schedule 17 (ClaimToPrivate, fresh private destination)	ok	3a2828ab85dcc503959447eb4a8734eaa4ab309fc6ef7f84869727c53b22c72b

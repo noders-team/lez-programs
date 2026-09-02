@@ -1,0 +1,8 @@
+tx	3a2828ab85dcc503959447eb4a8734eaa4ab309fc6ef7f84869727c53b22c72b
+block	27362
+schedule	DCupLBTdA6zzf7U2oPeL2SQpsaHvJihrXonwFsewx9yM
+escrow	BZv7AChohMo4jGrtQue5Z6qyFu5bZKpfBBp3Xjmoz8zj
+beneficiary_holding	21RuJK97VnxdiDA7SYWckkPNyDosnurd8eEjfyiF6ASL
+as_of	1787919126620
+init_nullifier	c260c8e46b9b153039b66464cff5044315ff5e4c7c41f857febcafde1aa93293
+private_balance	1000	decrypted by the beneficiary wallet; the destination account id is withheld (the LEZ init nullifier is a keyless hash of it)
